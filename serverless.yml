@@ -1,0 +1,17 @@
+service: millie-li-tools
+frameworkVersion: '2'
+provider:
+  name: aws
+  runtime: python3.7
+  region: us-east-1
+functions:
+  scraper:
+    handler: scrape.handler
+    events:
+      - http: POST /scrape
+  searcher:
+    handler: search.handler
+    events:
+      - http: POST /search
+plugins:
+  - serverless-offline
